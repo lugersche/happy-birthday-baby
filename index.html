@@ -109,6 +109,10 @@ position:relative;
 left:-500px;
 }
 
+.snoopy-final{
+width:160px;
+}
+
 @keyframes walkIn{
 to{
 left:0;
@@ -468,6 +472,42 @@ opacity:0;
 
 }
 
+/* SNOOPY FINAL */
+
+.snoopy-final{
+width:220px;
+margin-bottom:25px;
+opacity:0;
+filter:drop-shadow(0 0 20px rgba(255,255,255,.25));
+animation:
+fadeUp 2s forwards,
+floatFinal 4s ease-in-out infinite 2s;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes floatFinal{
+0%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
+100%{
+transform:translateY(0);
+}
+}
+
+
 /* CONFETTI */
 
 .confetti{
@@ -708,6 +748,8 @@ Blow The Candles
 <!-- FINAL -->
 
 <section class="final">
+
+<img src="snoopy-love.png" class="snoopy-final">
 
 <h3>
 Some people come into our lives
