@@ -218,16 +218,26 @@ transform:scale(1.2);
 
 .confetti{
 position:fixed;
-top:-10px;
-width:10px;
-height:10px;
-animation:fall 4s linear forwards;
+top:-20px;
+border-radius:2px;
+animation:fall linear forwards;
+z-index:9999;
 }
 
 @keyframes fall{
-to{
-transform:translateY(110vh) rotate(720deg);
+
+0%{
+transform:
+translateY(0)
+rotate(0deg);
 }
+
+100%{
+transform:
+translateY(120vh)
+rotate(1080deg);
+}
+
 }
 
 </style>
@@ -303,9 +313,23 @@ Click To Open
 
 <h2>Birthday Cake 🎂</h2>
 
-<div id="cake" class="cake">
-🎂🕯️
+<div class="cake-container">
+
+<div id="candle" class="candle">
+🕯️
 </div>
+
+<div id="cake" class="cake">
+🎂
+</div>
+
+</div>
+
+<h3 id="wish" class="hidden">
+✨ Make A Wish Allen 💙 ✨
+</h3>
+
+<div id="hearts"></div>
 
 <button class="btn" onclick="blowCandles()">
 Blow The Candles
@@ -422,35 +446,81 @@ setTimeout(typeWriter,35);
 
 /* CAKE */
 
-function blowCandles(){
+function function blowCandles(){
 
-document
-.getElementById('cake')
-.innerHTML='🎂✨';
+// lilin padam
 
-document
-.getElementById('wish')
-.classList
-.remove('hidden');
+document.getElementById("candle").innerHTML="💨";
 
-for(let i=0;i<120;i++){
+document.getElementById("cake").style.transform=
+"scale(1.2)";
+
+const wish=
+document.getElementById("wish");
+
+wish.classList.remove("hidden");
+
+wish.classList.add("wish-show");
+
+// confetti besar
+
+for(let i=0;i<350;i++){
 
 let confetti=
-document.createElement('div');
+document.createElement("div");
 
-confetti.classList.add('confetti');
+confetti.classList.add("confetti");
 
 confetti.style.left=
-Math.random()*100+'vw';
+Math.random()*100+"vw";
+
+confetti.style.top=
+Math.random()*50+"vh";
+
+confetti.style.width=
+(6+Math.random()*10)+"px";
+
+confetti.style.height=
+(6+Math.random()*10)+"px";
 
 confetti.style.background=
 `hsl(${Math.random()*360},100%,60%)`;
+
+confetti.style.animationDuration=
+(2+Math.random()*3)+"s";
 
 document.body.appendChild(confetti);
 
 setTimeout(()=>{
 confetti.remove();
-},4000);
+},5000);
+
+}
+
+// hati beterbangan
+
+for(let i=0;i<80;i++){
+
+let heart=
+document.createElement("div");
+
+heart.innerHTML="💙";
+
+heart.classList.add("floating-heart");
+
+heart.style.left=
+Math.random()*100+"vw";
+
+heart.style.bottom="-50px";
+
+heart.style.animationDuration=
+(3+Math.random()*3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
 
 }
 
