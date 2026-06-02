@@ -779,42 +779,28 @@ const text=
 
 Happy Birthday, my love.
 
-
 They say distance makes the heart grow fonder.
-
 But they don't tell you about the ache.
-
 The 3am loneliness. The empty side of the bed.
-
 The way you crave a hug that WiFi can't give.
 
-
 And yet, here we are. Still here. Still us.
-
 Because you're worth the waiting.
-
 Worth the efforts.
-
 Worth every "I miss you" that ends with "but we've got this."
 
-
 So happy birthday to my strongest reason.
-
 To the boy who makes far feel near.
-
 To the future I'm willing to be patient for.
 
-
 One day, "happy birthday" won't be through a screen.
-
 One day, it'll be with my arms around you.
-
 Untill that day, know this : I'm loving you from here, with everyhting I have.
 
 I love you more than words can ever explain.
 
-Always yours,
 
+Always yours,
 even from 390 km.
 
 - Arya 🤍`;
@@ -924,45 +910,45 @@ confetti.remove();
 
 }
 
-// hati beterbangan
+// Hati beterbangan
 
-for(let i=0;i<100;i++){
+for(let i = 0; i < 50; i++){
 
-let heart=
-document.createElement("div");
+setTimeout(() => {
 
-const items=[
+let heart = document.createElement("div");
+
+const items = [
 "💙",
 "🤍",
-"⭐",
-"✨"
+"💖",
+"✨",
+"🌙"
 ];
 
-heart.innerHTML=
-items[
-Math.floor(
-Math.random()*items.length
-)
-];
+heart.innerHTML =
+items[Math.floor(Math.random() * items.length)];
 
-heart.classList.add(
-"floating-heart"
-);
+heart.classList.add("floating-heart");
 
-heart.style.left=
-Math.random()*100+"vw";
+heart.style.left =
+Math.random() * 100 + "vw";
 
-heart.style.bottom="-50px";
+heart.style.bottom = "-50px";
 
-document.body.appendChild(
-heart
-);
+heart.style.fontSize =
+(20 + Math.random() * 20) + "px";
 
-setTimeout(()=>{
+heart.style.animationDuration =
+(3 + Math.random() * 3) + "s";
+
+document.body.appendChild(heart);
+
+setTimeout(() => {
 heart.remove();
-},6000);
+}, 6000);
 
-}
+}, i * 100);
 
 }
 
