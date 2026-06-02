@@ -181,6 +181,15 @@ margin-bottom:30px;
 width:350px;
 height:240px;
 
+.envelope{
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+transition:.5s;
+)
+
 background:
 linear-gradient(
 180deg,
@@ -243,6 +252,10 @@ display:flex;
 justify-content:center;
 gap:30px;
 flex-wrap:wrap;
+}
+
+.polaroid{
+width:280px;
 }
 
 .polaroid{
@@ -367,6 +380,12 @@ transform:scale(1);
 display:none;
 }
 
+.party-icons{
+font-size:40px;
+margin-bottom:20px;
+animation:floatBalloon 3s infinite;
+}
+
 /* FINAL */
 
 .final{
@@ -390,6 +409,19 @@ margin-top:20px;
 
 /* HEART */
 
+.heart{
+font-size:60px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+50%{
+transform:scale(1.2);
+}
+
+}
+
 .floating-heart{
 
 position:fixed;
@@ -412,8 +444,6 @@ opacity:1;
 100%{
 transform:translateY(-100vh);
 opacity:0;
-}
-
 }
 
 }
@@ -479,13 +509,38 @@ Open Your Gift 🎁
 
 </section>
 
+<section class="section">
+
+<h2>For Allen 💙</h2>
+
+<p style="max-width:700px;margin:auto;font-size:1.1rem;line-height:2;">
+This little website is my way of celebrating you,
+even from miles away.
+Every photo, every word, and every surprise here
+was made with love.
+</p>
+
+</section>
+
 <!-- LETTER -->
 
 <section class="section">
 
 <h2>A Letter For You 💌</h2>
 
-<div class="envelope" onclick="openLetter()">
+<div class="envelope" onclick="let opened=false;
+
+function openLetter(){
+
+if(opened) return;
+
+opened=true;
+
+document.getElementById("letter").style.display="block";
+
+typeWriter();
+
+}">
 Click To Open
 </div>
 
@@ -551,7 +606,11 @@ The Way You Love Me 💙
 
 <h2>Birthday Cake 🎂</h2>
 
-<div class="cake-container">
+<div class="cake-scene">
+
+<div class="party-icons">
+🎈 🎊 🎉 🎁
+</div>
 
 <div id="candle" class="candle">
 🕯️
@@ -578,6 +637,8 @@ Blow The Candles
 
 <!-- FINAL -->
 
+<section class="final">
+
 <h3>
 Some people come into our lives
 and make everything brighter.
@@ -588,19 +649,13 @@ and make everything brighter.
 <h1>I Love You Allen 💙</h1>
 
 <p>
-
 Forever & Always
-
 <br><br>
-
 Arya
-
 </p>
 
 <div class="heart">
-
 💙
-
 </div>
 
 </section>
@@ -736,7 +791,7 @@ wish.classList.add("wish-show");
 
 // confetti besar
 
-for(let i=0;i<500;i++){
+for(let i=0;i<800;i++){
 
 let confetti=
 document.createElement("div");
@@ -754,6 +809,11 @@ confetti.style.width=
 
 confetti.style.height=
 (6+Math.random()*10)+"px";
+
+confetti.style.borderRadius=
+Math.random()>0.5
+?"50%"
+:"0";
 
 const colors=[
 "#FFD166",
