@@ -834,16 +834,25 @@ letter.style.display="block";
 
 typeWriter();
 
-}else{
+}
 
-letter.style.display=
-letter.style.display==="none"
-? "block"
-: "none";
+}
+
+function typeWriter(){
+
+if(index < text.length){
+
+document.getElementById("typewriter").innerHTML +=
+text.charAt(index);
+
+index++;
+
+setTimeout(typeWriter,35);
 
 }
 
 }
+
 
 /* CAKE */
 
