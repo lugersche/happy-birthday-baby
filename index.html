@@ -13,6 +13,7 @@
 
 <style>
 
+/* RESET */
 *{
 margin:0;
 padding:0;
@@ -24,14 +25,8 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:'Cormorant Garamond',serif;
-background:
-linear-gradient(
-180deg,
-#0B1D51,
-#1B3C73,
-#274690
-);
+font-family:'Poppins',sans-serif;
+background:#081229;
 color:white;
 overflow-x:hidden;
 }
@@ -40,12 +35,12 @@ overflow-x:hidden;
 
 .stars{
 position:fixed;
-width:100%;
-height:100%;
 top:0;
 left:0;
-pointer-events:none;
+width:100%;
+height:100%;
 z-index:-1;
+pointer-events:none;
 }
 
 .star{
@@ -61,9 +56,9 @@ opacity:.2;
 }
 }
 
-/* HERO */
+/* INTRO */
 
-.hero{
+.intro{
 height:100vh;
 display:flex;
 flex-direction:column;
@@ -73,15 +68,27 @@ text-align:center;
 padding:20px;
 }
 
-.hero h1{
-font-family:'Great Vibes',cursive;
-font-size:6rem;
-margin-bottom:20px;
+.intro h1{
+font-family:'Cormorant Garamond',serif;
+font-size:5rem;
 }
 
-.hero p{
+.intro p{
+margin-top:15px;
 font-size:1.2rem;
-max-width:700px;
+}
+
+.snoopy-intro{
+width:250px;
+animation:walkIn 3s forwards;
+position:relative;
+left:-500px;
+}
+
+@keyframes walkIn{
+to{
+left:0;
+}
 }
 
 .btn{
@@ -89,89 +96,48 @@ margin-top:30px;
 padding:15px 35px;
 border:none;
 border-radius:50px;
-font-size:18px;
 cursor:pointer;
-background:white;
-color:#274690;
+font-size:18px;
 font-weight:600;
-transition:.3s;
 }
 
-.btn:hover{
-transform:scale(1.05);
-}
-
-/* SNOOPY */
-
-.snoopy{
-position:fixed;
-right:20px;
-bottom:20px;
-width:180px;
-z-index:999;
-animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-50%{
-transform:translateY(-15px);
-}
-}
-
-/* ENVELOPE */
+/* SECTIONS */
 
 .section{
 padding:100px 20px;
 text-align:center;
 }
 
+.section h2{
+font-family:'Cormorant Garamond',serif;
+font-size:3.5rem;
+margin-bottom:30px;
+}
+
+/* ENVELOPE */
+
 .envelope{
 width:320px;
 height:220px;
 margin:auto;
-position:relative;
+background:#4f8cff;
+border-radius:10px;
+display:flex;
+justify-content:center;
+align-items:center;
 cursor:pointer;
+transition:.5s;
 }
 
-.cover{
-position:absolute;
-width:100%;
-height:100%;
-background:#5fa8ff;
-transition:1s;
-transform-origin:top;
-border-radius:10px;
+.envelope:hover{
+transform:scale(1.05);
 }
 
-.envelope.open .cover{
-transform:rotateX(180deg);
-}
-
-.letter{
-position:absolute;
-width:90%;
-left:5%;
-top:15px;
-background:white;
-color:#222;
-padding:20px;
-border-radius:10px;
-opacity:0;
-transition:1s;
-}
-
-.envelope.open .letter{
-opacity:1;
-top:-120px;
-}
-
-/* MESSAGE */
-
-.message{
-max-width:850px;
-margin:auto;
+#letter{
+display:none;
+max-width:800px;
+margin:40px auto;
 line-height:2;
-font-size:1.05rem;
 }
 
 /* POLAROID */
@@ -179,22 +145,17 @@ font-size:1.05rem;
 .gallery{
 display:flex;
 justify-content:center;
-gap:40px;
+gap:30px;
 flex-wrap:wrap;
-margin-top:50px;
 }
 
 .polaroid{
 background:white;
-padding:12px;
+padding:10px;
 width:280px;
+color:#222;
 border-radius:5px;
-box-shadow:0 10px 25px rgba(0,0,0,.3);
-transform:rotate(-3deg);
-}
-
-.polaroid:nth-child(2){
-transform:rotate(4deg);
+box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 
 .polaroid img{
@@ -203,7 +164,6 @@ display:block;
 }
 
 .polaroid p{
-color:#222;
 margin-top:10px;
 font-weight:600;
 }
@@ -215,6 +175,12 @@ font-size:120px;
 margin:30px 0;
 }
 
+.hidden{
+display:none;
+}
+
+/* FINAL */
+
 .final{
 height:100vh;
 display:flex;
@@ -222,18 +188,30 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:20px;
 }
 
 .final h1{
-font-family:'Great Vibes',cursive;
+font-family:'Cormorant Garamond',serif;
 font-size:6rem;
-margin-bottom:20px;
 }
 
-.final h2{
-font-size:2rem;
-font-weight:300;
+.final p{
+font-size:1.3rem;
+margin-top:20px;
+}
+
+/* HEART */
+
+.heart{
+font-size:40px;
+animation:pulse 2s infinite;
+margin-top:20px;
+}
+
+@keyframes pulse{
+50%{
+transform:scale(1.2);
+}
 }
 
 /* CONFETTI */
@@ -247,15 +225,9 @@ animation:fall 4s linear forwards;
 }
 
 @keyframes fall{
-
-0%{
-transform:translateY(0) rotate(0);
-}
-
-100%{
+to{
 transform:translateY(110vh) rotate(720deg);
 }
-
 }
 
 </style>
@@ -269,19 +241,17 @@ transform:translateY(110vh) rotate(720deg);
 
 <div class="stars" id="stars"></div>
 
-<img src="snoopy.png" class="snoopy">
+<!-- INTRO -->
 
-<!-- HERO -->
+<section class="intro">
 
-<section class="hero">
+<img src="snoopy.png" class="snoopy-intro">
 
 <h1>Happy Birthday Allen 💙</h1>
 
-<p>
-A special birthday gift made with love, just for you.
-</p>
+<p>A Special Gift Made With Love</p>
 
-<button class="btn" onclick="startGift()">
+<button class="btn" onclick="openGift()">
 Open Your Gift 🎁
 </button>
 
@@ -291,63 +261,15 @@ Open Your Gift 🎁
 
 <section class="section">
 
-<h2 style="font-family:Great Vibes;font-size:60px;">
-A Letter For You 💌
-</h2>
+<h2>A Letter For You 💌</h2>
 
-<br>
-
-<div class="envelope" onclick="openEnvelope()">
-
-<div class="cover"></div>
-
-<div class="letter">
-
-Click below to read my message 💙
-
+<div class="envelope" onclick="openLetter()">
+Click To Open
 </div>
 
-</div>
+<div id="letter">
 
-<br><br>
-
-<div id="message" style="display:none;" class="message">
-
-<h2>To My Dearest Allen 💙</h2>
-
-<br>
-
-<p>
-
-Happy Birthday, my love.
-
-Today is a reminder of how lucky I am to have someone as wonderful as you in my life.
-
-Thank you for being my comfort on difficult days,
-my happiness on ordinary days,
-and my favorite person every single day.
-
-You have brought so much warmth, laughter, and love into my world.
-
-I hope this new chapter of your life is filled with beautiful memories,
-great opportunities,
-good health,
-and endless happiness.
-
-No matter where life takes us,
-I will always cherish every moment we share together.
-
-You are one of the best things that has ever happened to me.
-
-Happy Birthday, Allen.
-
-I love you more than words can ever explain.
-
-Forever yours,
-
-Arya 🤍
-
-</p>
+<p id="typewriter"></p>
 
 </div>
 
@@ -357,9 +279,7 @@ Arya 🤍
 
 <section class="section">
 
-<h2 style="font-family:Great Vibes;font-size:60px;">
-Our Memories 📸
-</h2>
+<h2>Our Memories 📸</h2>
 
 <div class="gallery">
 
@@ -370,7 +290,7 @@ Our Memories 📸
 
 <div class="polaroid">
 <img src="foto2.jpg">
-<p>Us Together 🤍</p>
+<p>Our Beautiful Memory 🤍</p>
 </div>
 
 </div>
@@ -381,17 +301,19 @@ Our Memories 📸
 
 <section class="section">
 
-<h2 style="font-family:Great Vibes;font-size:60px;">
-Birthday Cake 🎂
-</h2>
+<h2>Birthday Cake 🎂</h2>
 
-<div class="cake" id="cake">
+<div id="cake" class="cake">
 🎂🕯️
 </div>
 
 <button class="btn" onclick="blowCandles()">
-Blow The Candles 🕯️
+Blow The Candles
 </button>
+
+<h3 id="wish" class="hidden">
+Make A Wish Allen 💙
+</h3>
 
 </section>
 
@@ -401,116 +323,136 @@ Blow The Candles 🕯️
 
 <h1>I Love You Allen 💙</h1>
 
-<h2>
-Forever & Always
-</h2>
-
-<br>
-
 <p>
-Thank you for being part of my life.
+Forever & Always
+<br><br>
+- Arya -
 </p>
 
-<br>
-
-<h3>- Arya -</h3>
+<div class="heart">
+💙
+</div>
 
 </section>
 
 <script>
 
-/* START MUSIC */
+/* STARS */
 
-function startGift(){
+for(let i=0;i<150;i++){
 
-const music=document.getElementById("bgm");
+let star=document.createElement('div');
 
-music.play().catch(()=>{});
+star.classList.add('star');
 
-document.querySelector(".section")
-.scrollIntoView({
-behavior:"smooth"
+let size=Math.random()*3;
+
+star.style.width=size+'px';
+star.style.height=size+'px';
+
+star.style.left=Math.random()*100+'%';
+star.style.top=Math.random()*100+'%';
+
+document.getElementById('stars').appendChild(star);
+
+}
+
+/* MUSIC */
+
+function openGift(){
+
+document
+.getElementById('bgm')
+.play()
+.catch(()=>{});
+
+window.scrollTo({
+top:window.innerHeight,
+behavior:'smooth'
 });
 
 }
 
-/* ENVELOPE */
+/* LETTER */
 
-function openEnvelope(){
+const text=
+`To My Dearest Allen 💙
 
-document
-.querySelector(".envelope")
-.classList
-.add("open");
+Happy Birthday, my love.
 
-setTimeout(()=>{
+Today is a reminder of how lucky I am to have someone as wonderful as you in my life.
 
-document
-.getElementById("message")
-.style.display="block";
+Thank you for being my comfort on difficult days, my happiness on ordinary days, and my favorite person every single day.
 
-},1000);
+You have brought so much warmth, laughter, and love into my world.
 
-}
+I hope this new chapter of your life is filled with beautiful memories, good health, and endless happiness.
 
-/* STARS */
+I love you more than words can ever explain.
 
-for(let i=0;i<120;i++){
+Forever yours,
 
-let star=document.createElement("div");
+Arya 🤍`;
 
-star.classList.add("star");
+let index=0;
 
-star.style.width=Math.random()*3+"px";
-star.style.height=star.style.width;
+function openLetter(){
 
-star.style.left=Math.random()*100+"%";
-star.style.top=Math.random()*100+"%";
+document.getElementById('letter').style.display='block';
 
-star.style.animationDelay=
-Math.random()*5+"s";
-
-document
-.getElementById("stars")
-.appendChild(star);
+typeWriter();
 
 }
 
-/* CAKE + CONFETTI */
+function typeWriter(){
+
+if(index<text.length){
+
+document
+.getElementById('typewriter')
+.innerHTML+=text.charAt(index);
+
+index++;
+
+setTimeout(typeWriter,35);
+
+}
+
+}
+
+/* CAKE */
 
 function blowCandles(){
 
 document
-.getElementById("cake")
-.innerHTML="🎂✨";
+.getElementById('cake')
+.innerHTML='🎂✨';
 
-for(let i=0;i<150;i++){
+document
+.getElementById('wish')
+.classList
+.remove('hidden');
+
+for(let i=0;i<120;i++){
 
 let confetti=
-document.createElement("div");
+document.createElement('div');
 
-confetti.classList.add("confetti");
+confetti.classList.add('confetti');
 
 confetti.style.left=
-Math.random()*100+"vw";
+Math.random()*100+'vw';
 
 confetti.style.background=
 `hsl(${Math.random()*360},100%,60%)`;
-
-confetti.style.animationDuration=
-(2+Math.random()*3)+"s";
 
 document.body.appendChild(confetti);
 
 setTimeout(()=>{
 confetti.remove();
-},5000);
+},4000);
 
 }
-
-setTimeout(()=>{
-alert("Make a wish, Allen 💙");
-},500);
 
 }
 
