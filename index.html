@@ -123,10 +123,24 @@ border-radius:50px;
 cursor:pointer;
 font-size:18px;
 font-weight:600;
+
+background:
+linear-gradient(
+90deg,
+#60A5FA,
+#3B82F6
+);
+
+color:white;
+
+box-shadow:
+0 10px 25px rgba(59,130,246,.4);
+
+transition:.3s;
 }
 
-.intro-wrapper{
-position:relative;
+.btn:hover{
+transform:translateY(-4px);
 }
 
 .balloon{
@@ -254,6 +268,12 @@ margin:40px auto;
 line-height:2;
 }
 
+#typewriter{
+white-space:pre-line;
+font-size:1.1rem;
+line-height:2;
+}
+
 /* POLAROID */
 
 .gallery{
@@ -335,10 +355,11 @@ rgba(255,255,255,.15);
 
 /* CAKE */
 
-.cake-container{
-margin:40px auto;
-position:relative;
-width:200px;
+.cake-scene{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 }
 
 .candle{
@@ -483,6 +504,64 @@ rotate(1080deg);
 
 }
 
+@media (max-width:768px){
+
+.intro h1{
+font-size:3rem;
+}
+
+.intro p{
+font-size:1rem;
+}
+
+.snoopy-intro{
+width:180px;
+}
+
+.section{
+padding:70px 20px;
+}
+
+.section h2{
+font-size:2.3rem;
+}
+
+.envelope{
+width:280px;
+height:200px;
+}
+
+.gallery{
+gap:20px;
+}
+
+.polaroid{
+width:240px;
+}
+
+.reason-card{
+width:100%;
+max-width:300px;
+}
+
+.cake{
+font-size:100px;
+}
+
+.candle{
+font-size:45px;
+}
+
+.final h1{
+font-size:3rem;
+}
+
+.final p{
+font-size:1rem;
+}
+
+}
+
 </style>
 </head>
 
@@ -537,7 +616,7 @@ was made with love.
 
 <h2>A Letter For You 💌</h2>
 
-<div class="envelope" onclick="let opened=false;
+<div class="envelope" onclick="openLetter()">
 
 function openLetter(){
 
@@ -754,9 +833,13 @@ even from 390 km.
 
 - Arya 🤍`;
 
-let index=0;
+let opened=false;
 
 function openLetter(){
+
+if(opened) return;
+
+opened=true;
 
 document.getElementById('letter').style.display='block';
 
