@@ -837,9 +837,15 @@ setTimeout(typeWriter,35);
 
 
 /* CAKE */
-
+let cakeBlown = false;
 function blowCandles(){
 
+if(cakeBlown) return;
+cakeBlown = true;
+
+...
+}
+  
 // lilin padam
 
 document.getElementById("candle").innerHTML="💨";
