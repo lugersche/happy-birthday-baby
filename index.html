@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Allen 💙</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:
+linear-gradient(
+180deg,
+#0B1D51,
+#1B3C73,
+#274690
+);
+color:white;
+overflow-x:hidden;
+}
+
+/* STARS */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+pointer-events:none;
+z-index:-1;
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+50%{
+opacity:.2;
+}
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-family:'Great Vibes',cursive;
+font-size:6rem;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:1.2rem;
+max-width:700px;
+}
+
+.btn{
+margin-top:30px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+font-size:18px;
+cursor:pointer;
+background:white;
+color:#274690;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* SNOOPY */
+
+.snoopy{
+position:fixed;
+right:20px;
+bottom:20px;
+width:180px;
+z-index:999;
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-15px);
+}
+}
+
+/* ENVELOPE */
+
+.section{
+padding:100px 20px;
+text-align:center;
+}
+
+.envelope{
+width:320px;
+height:220px;
+margin:auto;
+position:relative;
+cursor:pointer;
+}
+
+.cover{
+position:absolute;
+width:100%;
+height:100%;
+background:#5fa8ff;
+transition:1s;
+transform-origin:top;
+border-radius:10px;
+}
+
+.envelope.open .cover{
+transform:rotateX(180deg);
+}
+
+.letter{
+position:absolute;
+width:90%;
+left:5%;
+top:15px;
+background:white;
+color:#222;
+padding:20px;
+border-radius:10px;
+opacity:0;
+transition:1s;
+}
+
+.envelope.open .letter{
+opacity:1;
+top:-120px;
+}
+
+/* MESSAGE */
+
+.message{
+max-width:850px;
+margin:auto;
+line-height:2;
+font-size:1.05rem;
+}
+
+/* POLAROID */
+
+.gallery{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:50px;
+}
+
+.polaroid{
+background:white;
+padding:12px;
+width:280px;
+border-radius:5px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+transform:rotate(-3deg);
+}
+
+.polaroid:nth-child(2){
+transform:rotate(4deg);
+}
+
+.polaroid img{
+width:100%;
+display:block;
+}
+
+.polaroid p{
+color:#222;
+margin-top:10px;
+font-weight:600;
+}
+
+/* CAKE */
+
+.cake{
+font-size:120px;
+margin:30px 0;
+}
+
+.final{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.final h1{
+font-family:'Great Vibes',cursive;
+font-size:6rem;
+margin-bottom:20px;
+}
+
+.final h2{
+font-size:2rem;
+font-weight:300;
+}
+
+/* CONFETTI */
+
+.confetti{
+position:fixed;
+top:-10px;
+width:10px;
+height:10px;
+animation:fall 4s linear forwards;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(0) rotate(0);
+}
+
+100%{
+transform:translateY(110vh) rotate(720deg);
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="stars" id="stars"></div>
+
+<img src="snoopy.png" class="snoopy">
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>Happy Birthday Allen 💙</h1>
+
+<p>
+A special birthday gift made with love, just for you.
+</p>
+
+<button class="btn" onclick="startGift()">
+Open Your Gift 🎁
+</button>
+
+</section>
+
+<!-- LETTER -->
+
+<section class="section">
+
+<h2 style="font-family:Great Vibes;font-size:60px;">
+A Letter For You 💌
+</h2>
+
+<br>
+
+<div class="envelope" onclick="openEnvelope()">
+
+<div class="cover"></div>
+
+<div class="letter">
+
+Click below to read my message 💙
+
+</div>
+
+</div>
+
+<br><br>
+
+<div id="message" style="display:none;" class="message">
+
+<h2>To My Dearest Allen 💙</h2>
+
+<br>
+
+<p>
+
+Happy Birthday, my love.
+
+Today is a reminder of how lucky I am to have someone as wonderful as you in my life.
+
+Thank you for being my comfort on difficult days,
+my happiness on ordinary days,
+and my favorite person every single day.
+
+You have brought so much warmth, laughter, and love into my world.
+
+I hope this new chapter of your life is filled with beautiful memories,
+great opportunities,
+good health,
+and endless happiness.
+
+No matter where life takes us,
+I will always cherish every moment we share together.
+
+You are one of the best things that has ever happened to me.
+
+Happy Birthday, Allen.
+
+I love you more than words can ever explain.
+
+Forever yours,
+
+Arya 🤍
+
+</p>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="section">
+
+<h2 style="font-family:Great Vibes;font-size:60px;">
+Our Memories 📸
+</h2>
+
+<div class="gallery">
+
+<div class="polaroid">
+<img src="foto1.jpg">
+<p>My Favorite Smile 💙</p>
+</div>
+
+<div class="polaroid">
+<img src="foto2.jpg">
+<p>Us Together 🤍</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CAKE -->
+
+<section class="section">
+
+<h2 style="font-family:Great Vibes;font-size:60px;">
+Birthday Cake 🎂
+</h2>
+
+<div class="cake" id="cake">
+🎂🕯️
+</div>
+
+<button class="btn" onclick="blowCandles()">
+Blow The Candles 🕯️
+</button>
+
+</section>
+
+<!-- FINAL -->
+
+<section class="final">
+
+<h1>I Love You Allen 💙</h1>
+
+<h2>
+Forever & Always
+</h2>
+
+<br>
+
+<p>
+Thank you for being part of my life.
+</p>
+
+<br>
+
+<h3>- Arya -</h3>
+
+</section>
+
+<script>
+
+/* START MUSIC */
+
+function startGift(){
+
+const music=document.getElementById("bgm");
+
+music.play().catch(()=>{});
+
+document.querySelector(".section")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+/* ENVELOPE */
+
+function openEnvelope(){
+
+document
+.querySelector(".envelope")
+.classList
+.add("open");
+
+setTimeout(()=>{
+
+document
+.getElementById("message")
+.style.display="block";
+
+},1000);
+
+}
+
+/* STARS */
+
+for(let i=0;i<120;i++){
+
+let star=document.createElement("div");
+
+star.classList.add("star");
+
+star.style.width=Math.random()*3+"px";
+star.style.height=star.style.width;
+
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+
+star.style.animationDelay=
+Math.random()*5+"s";
+
+document
+.getElementById("stars")
+.appendChild(star);
+
+}
+
+/* CAKE + CONFETTI */
+
+function blowCandles(){
+
+document
+.getElementById("cake")
+.innerHTML="🎂✨";
+
+for(let i=0;i<150;i++){
+
+let confetti=
+document.createElement("div");
+
+confetti.classList.add("confetti");
+
+confetti.style.left=
+Math.random()*100+"vw";
+
+confetti.style.background=
+`hsl(${Math.random()*360},100%,60%)`;
+
+confetti.style.animationDuration=
+(2+Math.random()*3)+"s";
+
+document.body.appendChild(confetti);
+
+setTimeout(()=>{
+confetti.remove();
+},5000);
+
+}
+
+setTimeout(()=>{
+alert("Make a wish, Allen 💙");
+},500);
+
+}
+
+</script>
+
+</body>
+</html>
