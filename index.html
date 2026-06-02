@@ -826,17 +826,24 @@ even from 390 km.
 let opened=false;
 let index=0;
 
-function typeWriter(){
+function openLetter(){
 
-if(index<text.length){
+const letter=document.getElementById("letter");
 
-document
-.getElementById('typewriter')
-.innerHTML+=text.charAt(index);
+if(!opened){
 
-index++;
+opened=true;
 
-setTimeout(typeWriter,35);
+letter.style.display="block";
+
+typeWriter();
+
+}else{
+
+letter.style.display=
+letter.style.display==="none"
+? "block"
+: "none";
 
 }
 
