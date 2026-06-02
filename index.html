@@ -125,6 +125,42 @@ font-size:18px;
 font-weight:600;
 }
 
+.intro-wrapper{
+position:relative;
+}
+
+.balloon{
+position:absolute;
+font-size:50px;
+animation:floatBalloon 4s ease-in-out infinite;
+}
+
+.balloon1{
+left:-80px;
+top:20px;
+}
+
+.balloon2{
+right:-60px;
+top:-20px;
+animation-delay:1s;
+}
+
+.balloon3{
+right:60px;
+top:120px;
+animation-delay:2s;
+}
+
+@keyframes floatBalloon{
+
+50%{
+transform:
+translateY(-20px);
+}
+
+}
+
 /* SECTIONS */
 
 .section{
@@ -141,16 +177,52 @@ margin-bottom:30px;
 /* ENVELOPE */
 
 .envelope{
-width:320px;
-height:220px;
-margin:auto;
-background:#4f8cff;
-border-radius:10px;
+
+width:350px;
+height:240px;
+
+background:
+linear-gradient(
+180deg,
+#FFF8E7,
+#F6EBD9
+);
+
+border-radius:15px;
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.3);
+
+color:#222;
+
+font-weight:600;
+
+position:relative;
+}
+
+.envelope::before{
+
+content:"💙";
+
+position:absolute;
+
+top:-25px;
+left:50%;
+
+transform:translateX(-50%);
+
+font-size:40px;
+
+background:#FFD166;
+
+width:60px;
+height:60px;
+
+border-radius:50%;
+
 display:flex;
-justify-content:center;
 align-items:center;
-cursor:pointer;
-transition:.5s;
+justify-content:center;
 }
 
 .envelope:hover{
@@ -174,12 +246,25 @@ flex-wrap:wrap;
 }
 
 .polaroid{
+
 background:white;
-padding:10px;
-width:280px;
-color:#222;
-border-radius:5px;
-box-shadow:0 10px 30px rgba(0,0,0,.4);
+
+padding:12px;
+
+border-radius:6px;
+
+box-shadow:
+0 0 30px rgba(96,165,250,.35);
+
+transition:.4s;
+}
+
+.polaroid:hover{
+
+transform:
+translateY(-10px)
+rotate(2deg);
+
 }
 
 .polaroid img{
@@ -190,6 +275,40 @@ display:block;
 .polaroid p{
 margin-top:10px;
 font-weight:600;
+}
+
+.reasons{
+
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.reason-card{
+
+background:
+rgba(255,255,255,.08);
+
+padding:25px;
+
+border-radius:20px;
+
+backdrop-filter:blur(10px);
+
+width:220px;
+
+transition:.4s;
+}
+
+.reason-card:hover{
+
+transform:
+translateY(-10px);
+
+background:
+rgba(255,255,255,.15);
+
 }
 
 /* CAKE */
@@ -272,10 +391,15 @@ margin-top:20px;
 /* HEART */
 
 .floating-heart{
+
 position:fixed;
+
 font-size:25px;
-animation:heartFly 5s linear forwards;
-pointer-events:none;
+
+animation:
+heartFly 5s linear forwards;
+
+z-index:9999;
 }
 
 @keyframes heartFly{
@@ -288,6 +412,8 @@ opacity:1;
 100%{
 transform:translateY(-100vh);
 opacity:0;
+}
+
 }
 
 }
@@ -333,7 +459,15 @@ rotate(1080deg);
 
 <section class="intro">
 
+<div class="intro-wrapper">
+
 <img src="snoopy.png" class="snoopy-intro">
+
+<div class="balloon balloon1">🎈</div>
+<div class="balloon balloon2">🎈</div>
+<div class="balloon balloon3">🎈</div>
+
+</div>
 
 <h1>Happy Birthday Allen 💙</h1>
 
@@ -385,6 +519,32 @@ Click To Open
 
 </section>
 
+<section class="section">
+
+<h2>Reasons Why I Love You 💙</h2>
+
+<div class="reasons">
+
+<div class="reason-card">
+Your Smile 😊
+</div>
+
+<div class="reason-card">
+Your Kindness 🤍
+</div>
+
+<div class="reason-card">
+Your Patience 🌙
+</div>
+
+<div class="reason-card">
+The Way You Love Me 💙
+</div>
+
+</div>
+
+</section>
+
 <!-- CAKE -->
 
 <section class="section">
@@ -418,18 +578,29 @@ Blow The Candles
 
 <!-- FINAL -->
 
-<section class="final">
+<h3>
+Some people come into our lives
+and make everything brighter.
+</h3>
+
+<br>
 
 <h1>I Love You Allen 💙</h1>
 
 <p>
+
 Forever & Always
+
 <br><br>
-- Arya -
+
+Arya
+
 </p>
 
 <div class="heart">
+
 💙
+
 </div>
 
 </section>
@@ -565,7 +736,7 @@ wish.classList.add("wish-show");
 
 // confetti besar
 
-for(let i=0;i<350;i++){
+for(let i=0;i<500;i++){
 
 let confetti=
 document.createElement("div");
@@ -584,8 +755,20 @@ confetti.style.width=
 confetti.style.height=
 (6+Math.random()*10)+"px";
 
+const colors=[
+"#FFD166",
+"#60A5FA",
+"#3B82F6",
+"#FFB4D2",
+"#FFFFFF"
+];
+
 confetti.style.background=
-`hsl(${Math.random()*360},100%,60%)`;
+colors[
+Math.floor(
+Math.random()*colors.length
+)
+];
 
 confetti.style.animationDuration=
 (2+Math.random()*3)+"s";
@@ -600,24 +783,37 @@ confetti.remove();
 
 // hati beterbangan
 
-for(let i=0;i<80;i++){
+for(let i=0;i<100;i++){
 
 let heart=
 document.createElement("div");
 
-heart.innerHTML="💙";
+const items=[
+"💙",
+"🤍",
+"⭐",
+"✨"
+];
 
-heart.classList.add("floating-heart");
+heart.innerHTML=
+items[
+Math.floor(
+Math.random()*items.length
+)
+];
+
+heart.classList.add(
+"floating-heart"
+);
 
 heart.style.left=
 Math.random()*100+"vw";
 
 heart.style.bottom="-50px";
 
-heart.style.animationDuration=
-(3+Math.random()*3)+"s";
-
-document.body.appendChild(heart);
+document.body.appendChild(
+heart
+);
 
 setTimeout(()=>{
 heart.remove();
