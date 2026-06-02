@@ -143,6 +143,11 @@ transition:.3s;
 transform:translateY(-4px);
 }
 
+.intro-wrapper{
+position:relative;
+margin-bottom:20px;
+}
+
 .balloon{
 position:absolute;
 font-size:50px;
@@ -254,6 +259,11 @@ display:none;
 max-width:800px;
 margin:40px auto;
 line-height:2;
+
+background:rgba(255,255,255,.05);
+padding:40px;
+border-radius:20px;
+backdrop-filter:blur(10px);
 }
 
 #typewriter{
@@ -575,7 +585,11 @@ font-size:1rem;
 
 </div>
 
-<h1>Happy Birthday Allen 💙</h1>
+<h1>
+Happy Birthday
+<br>
+Allen 💙
+</h1>
 
 <p>A Special Gift Made With Love</p>
 
@@ -605,19 +619,7 @@ was made with love.
 <h2>A Letter For You 💌</h2>
 
 <div class="envelope" onclick="openLetter()">
-
-function openLetter(){
-
-if(opened) return;
-
-opened=true;
-
-document.getElementById("letter").style.display="block";
-
-typeWriter();
-
-}">
-Click To Open
+Click To Open 💌
 </div>
 
 <div id="letter">
@@ -822,18 +824,7 @@ even from 390 km.
 - Arya 🤍`;
 
 let opened=false;
-
-function openLetter(){
-
-if(opened) return;
-
-opened=true;
-
-document.getElementById('letter').style.display='block';
-
-typeWriter();
-
-}
+let index=0;
 
 function typeWriter(){
 
